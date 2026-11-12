@@ -59,8 +59,7 @@ public class Main {
 		estacao1.armazenarLeituras();
 		
 		
-		
-		System.out.println(estacao1.getLeituras());
+	
 		
 	}
 	

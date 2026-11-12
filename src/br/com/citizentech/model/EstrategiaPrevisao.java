@@ -4,25 +4,44 @@ import java.util.ArrayList;
 
 public abstract class EstrategiaPrevisao {
 
-	private ArrayList<ArrayList<Double>> historico;
-	
-	public EstrategiaPrevisao(ArrayList<ArrayList<Double>> historico) {
-		setHistorico(historico);
-	}
-	
-	public ArrayList<ArrayList<Double>> getHistorico() {
-		return historico;
-	}
-	
-	private void setHistorico(ArrayList<ArrayList<Double>> historico) {
-		if(historico.isEmpty()) {
-			System.out.println("Sensores ainda nao captaram sinais");
-			return;
-		}
-		this.historico = historico;
-	}
-	
-	public abstract double prever();
+    private ArrayList<Double> historico;
 
-	
+    public EstrategiaPrevisao(ArrayList<Double> historico) { 
+        setHistorico(historico);
+    }
+
+    public ArrayList<Double> getHistorico() {
+
+        if (historico == null) {
+            return new ArrayList<>();
+        }
+
+        return historico;
+    }
+
+    private void setHistorico(ArrayList<Double> historico) {
+
+        if (historico == null || historico.isEmpty()) {
+            System.out.println("Erro: Historico vazio ou invalido");
+            return;
+        }
+
+        for (Double leitura : historico) {
+
+            if (leitura == null ||
+                leitura < 0) {
+
+                System.out.println("Erro: Historico possui leituras invalidas");
+                return;
+            }
+        }
+
+        this.historico = historico;
+    }
+
+    public abstract double prever();
+    
+    
 }
+
+
