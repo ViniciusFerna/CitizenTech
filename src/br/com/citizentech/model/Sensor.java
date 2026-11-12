@@ -4,7 +4,7 @@ public interface Sensor {
 
 	public double lerValor();
 	
-	public boolean verificarFunciomaneto();
+	public boolean verificarFuncionamento();
 	
 	public void ativarSensor();
 	

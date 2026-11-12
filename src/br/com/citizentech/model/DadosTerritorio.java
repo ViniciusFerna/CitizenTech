@@ -10,20 +10,16 @@ public class DadosTerritorio {
 	
 	private int populacao;
 	
-	private boolean areaVulneravel;
-	
 	private double[] limiarAtencao; // SensorChuva, SensorNivelDoRio, SensorUmidade
 	
 	private double[] limiarCritico; // SensorChuva, SensorNivelDoRio, SensorUmidade
 
 	public DadosTerritorio(
 			String codigoIdentificador,
-			int populacao,
-			boolean areaVulneravel) {
+			int populacao) {
 		
 		setCodigoIdentificador(codigoIdentificador);
 		setPopulacao(populacao);
-		setAreaVulneravel(areaVulneravel);
 		setCodigoAcesso();
 		
 	}
@@ -52,21 +48,13 @@ public class DadosTerritorio {
 		this.populacao = populacao;
 	}
 
-	public boolean isAreaVulneravel() {
-		return areaVulneravel;
-	}
-	
-	public void setAreaVulneravel(boolean areaVulneravel) {
-		this.areaVulneravel = areaVulneravel;
-	}
-
 	public double[] getLimiarAtencao() {
 		return limiarAtencao;
 	}
 
 	public void setLimiarAtencao(double[] limiarAtencao) {
-		boolean quantidadeLeituras = limiarAtencao.length == 3;
-		
+		int quantidadeLeituras = limiarAtencao.length;
+			
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Digite o codigo de acesso para alterar os limiares de atencao: ");
 		
@@ -77,7 +65,14 @@ public class DadosTerritorio {
 			return;
 		}
 		
-		if(!quantidadeLeituras) {
+		for(int i = 0; i < quantidadeLeituras; i++) {
+			if(limiarAtencao[i] < 0 || limiarAtencao[i] > 100) {
+				System.out.println("Os valores dos limiares devem estar entre 0 e 100");
+				return;
+			}
+		}
+		
+		if(quantidadeLeituras != 3) {
 			System.out.println("Erro ao adicionar limiares criticos: Digite tres limiares de atencao");
 			return;
 		}
@@ -90,7 +85,7 @@ public class DadosTerritorio {
 	}
 
 	public void setLimiarCritico(double[] limiarCritico) {
-		boolean quantidadeLeituras = limiarCritico.length == 3;
+		int quantidadeLeituras = limiarCritico.length;
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Digite o codigo de acesso para alterar os limiares criticos: ");
@@ -102,7 +97,14 @@ public class DadosTerritorio {
 			return;
 		}
 		
-		if(!quantidadeLeituras) {
+		for(int i = 0; i < quantidadeLeituras; i++) {
+			if(limiarAtencao[i] < 0 || limiarAtencao[i] > 100) {
+				System.out.println("Os valores dos limiares devem estar entre 0 e 100");
+				return;
+			}
+		}
+		
+		if(quantidadeLeituras != 3) {
 			System.out.println("Erro ao adicionar limiares criticos: Digite tres limiares criticos");
 			return;
 		}

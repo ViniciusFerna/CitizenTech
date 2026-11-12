@@ -68,9 +68,9 @@ public class EstacaoDeObservacao extends ComponenteTerritorial {
             return;
         }
 
-        if (!sensorChuva.verificarFunciomaneto() ||
-            !sensorRio.verificarFunciomaneto() ||
-            !sensorUmidade.verificarFunciomaneto()) {
+        if (!sensorChuva.verificarFuncionamento() ||
+            !sensorRio.verificarFuncionamento() ||
+            !sensorUmidade.verificarFuncionamento()) {
 
             System.out.println("Erro: Existem sensores desativados");
             return;
@@ -97,8 +97,24 @@ public class EstacaoDeObservacao extends ComponenteTerritorial {
 
     @Override
     public StatusDeAlerta verificarStatusDeAlerta(double[] limiarAtencao, double[] limiarCritico) {
-
-        return null;
+    	
+    	double valorChuva = sensorChuva.getLeitura();
+    	double valorRio = sensorRio.getLeitura();
+    	double valorUmidade = sensorUmidade.getLeitura();
+    	
+		if(valorChuva > limiarCritico[0] || 
+		   valorRio > limiarCritico[1] ||
+	       valorUmidade < limiarCritico[2]) {
+	    	return StatusDeAlerta.CRITICO;
+	    }
+    		
+    	if(valorChuva > limiarAtencao[0] && valorChuva < limiarCritico[0] ||
+    	   valorRio > limiarAtencao[1] && valorRio < limiarCritico[1] ||
+    	   valorUmidade < limiarAtencao[2] && valorUmidade > limiarCritico[2]) {
+    		return StatusDeAlerta.ATENCAO;
+    	}
+    		
+        return StatusDeAlerta.NORMAL;
     }
     
 }

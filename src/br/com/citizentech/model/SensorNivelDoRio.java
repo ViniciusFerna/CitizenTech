@@ -30,7 +30,7 @@ public class SensorNivelDoRio implements Sensor {
 	}
 
 	@Override
-	public boolean verificarFunciomaneto() {
+	public boolean verificarFuncionamento() {
 		return funcionamento;
 	}
 

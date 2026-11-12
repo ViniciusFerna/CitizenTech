@@ -27,7 +27,6 @@ public abstract class EstrategiaPrevisao {
         }
 
         for (Double leitura : historico) {
-
             if (leitura == null ||
                 leitura < 0) {
 

@@ -30,7 +30,7 @@ public class SensorUmidade implements Sensor {
 	}
 
 	@Override
-	public boolean verificarFunciomaneto() {
+	public boolean verificarFuncionamento() {
 		return funcionamento;
 	}
 
