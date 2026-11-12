@@ -2,15 +2,9 @@ package br.com.citizentech.model;
 
 public class SensorChuva implements Sensor {
 	
-	private ComponenteTerritorial areaDoSensor;
-	
 	private double leitura;
 	
 	private boolean funcionamento;
-
-	public SensorChuva(ComponenteTerritorial area) {
-		this.areaDoSensor = area;
-	}
 	
 	public void setLeitura(double leitura) {
 		if(leitura > 100 || leitura < 0) {
@@ -20,9 +14,6 @@ public class SensorChuva implements Sensor {
 		this.leitura = leitura;
 	}
 	
-	public ComponenteTerritorial getAreaDoSensor() {
-		return areaDoSensor;
-	}
 
 	public double getLeitura() {
 		return leitura;

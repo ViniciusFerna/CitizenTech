@@ -6,11 +6,11 @@ public abstract class ComponenteTerritorial {
 	
 	private String nome;
 	
-	private String regiao;
+	private DadosTerritorio regiao;
 	
 	private StatusDeAtivacao statusDeAtivacao;
 	
-	public ComponenteTerritorial(int id, String nome, String regiao) {
+	public ComponenteTerritorial(int id, String nome, DadosTerritorio regiao) {
 		this.id = id;
 		this.nome = nome;
 		this.regiao = regiao;
@@ -24,7 +24,7 @@ public abstract class ComponenteTerritorial {
 		return nome;
 	}
 
-	public String getRegiao() {
+	public DadosTerritorio getRegiao() {
 		return regiao;
 	}
 
@@ -40,6 +40,6 @@ public abstract class ComponenteTerritorial {
 		this.statusDeAtivacao = StatusDeAtivacao.DESATIVADO;
 	}
 	
-	public abstract StatusDeAlerta verificarStatusDeAlerta();
+	public abstract StatusDeAlerta verificarStatusDeAlerta(double[] limiarAtencao, double[] limiarCritico);
 
 }

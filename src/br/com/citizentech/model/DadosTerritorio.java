@@ -12,9 +12,9 @@ public class DadosTerritorio {
 	
 	private boolean areaVulneravel;
 	
-	private double[] limiarAtencao;
+	private double[] limiarAtencao; // SensorChuva, SensorNivelDoRio, SensorUmidade
 	
-	private double[] limiarCritico;
+	private double[] limiarCritico; // SensorChuva, SensorNivelDoRio, SensorUmidade
 
 	public DadosTerritorio(
 			String codigoIdentificador,

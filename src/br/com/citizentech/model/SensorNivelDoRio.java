@@ -1,16 +1,10 @@
 package br.com.citizentech.model;
 
 public class SensorNivelDoRio implements Sensor {
-
-	private ComponenteTerritorial areaDoSensor;
 	
 	private double leitura;
 	
 	private boolean funcionamento;
-	
-	public SensorNivelDoRio(ComponenteTerritorial area) {
-		this.areaDoSensor = area;
-	}
 	
 	public void setLeitura(double leitura) {
 		if(leitura < 0) {
@@ -19,11 +13,6 @@ public class SensorNivelDoRio implements Sensor {
 		}
 		this.leitura = leitura;
 	}
-	
-	public ComponenteTerritorial getAreaDoSensor() {
-		return areaDoSensor;
-	}
-
 
 	public double getLeitura() {
 		return leitura;
